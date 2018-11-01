@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+   default-init-method="initabc"
+   default-destroy-method="destroy">
+
+	<bean class="com.spring.firstApp.HelloWorld" id="helloWorld">
+		<property name="message" value="Deepti"></property>
+	</bean>
+
+
+	<bean class="com.spring.beanScope.SingleTonExample" id="singleTon"
+		scope="singleton">
+		<property name="message" value="Message from SingleTon bean"></property>
+	</bean>
+
+
+	<bean class="com.spring.beanScope.PrototypeExample" id="prototype"
+		scope="prototype">
+		<property name="message" value="Message from Prototype bean"></property>
+	</bean>
+
+	<bean class="com.spring.beanLifecycle.HelloWorld" id="lifeCycle">
+		<property name="message" value="message from lifeCycle bean property"></property>
+	</bean>
+	
+	
+	<bean class="com.spring.beanInheritance.HelloIndia" id="inheritanceBeanIndia" parent="inheritanceBeanWorld">
+		<property name="IndiaMessage1" value="First Message from India" ></property>
+		<property name="IndiaMessage2" value="Second Message from India" ></property>
+	</bean>
+	<bean class="com.spring.beanInheritance.HelloWorld" id="inheritanceBeanWorld" >
+		<property name="worldMessage1" value="First Message from World" ></property>
+		<property name="worldMessage2" value="Second Message form World" ></property>
+	</bean>
+	
+	<bean class="com.spring.dependencyInjection.TextEditor" id="textEditorConstructorDI">
+		<constructor-arg ref="spellCheckerConstructorDI"></constructor-arg>
+	</bean>
+	
+	<bean class="com.spring.dependencyInjection.SpellChecker" id="spellCheckerConstructorDI">
+	</bean>
+
+</beans>
